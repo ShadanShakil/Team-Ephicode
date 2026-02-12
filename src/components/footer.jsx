@@ -39,11 +39,8 @@ export function Footer() {
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
             <a href="#" className="flex items-center gap-2 text-foreground">
-              <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                <rect width="32" height="32" rx="8" fill="currentColor" />
-                <path d="M8 9h3.5v8.5a4.5 4.5 0 009 0V9H24v8.5a8 8 0 01-16 0V9z" fill="hsl(var(--background))" />
-              </svg>
-              <span className="text-base font-semibold tracking-tight">Utility</span>
+              <img src="/logo.svg" alt="Logo" className="w-10 h-10" />
+              <span className="text-base font-semibold tracking-tight">Ephicode</span>
             </a>
             <p className="mt-4 text-[13px] text-muted-foreground leading-relaxed max-w-[240px]">
               Award-winning mobile app development agency in New York.

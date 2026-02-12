@@ -40,10 +40,7 @@ export function Navbar() {
         <div className={`transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
           <div className="flex items-center justify-between px-6 lg:px-10 xl:px-16 py-4">
             <a href="#" className="flex items-center gap-2.5 text-foreground">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <rect width="32" height="32" rx="8" fill="currentColor" />
-                <path d="M8 9h3.5v8.5a4.5 4.5 0 009 0V9H24v8.5a8 8 0 01-16 0V9z" fill="hsl(var(--background))" />
-              </svg>
+              <img src="/logo.svg" alt="Logo" className="w-10 h-10" />
             </a>
 
             <div className="flex items-center gap-8">

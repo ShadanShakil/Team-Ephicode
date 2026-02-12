@@ -1,21 +1,22 @@
-import { Inter, Space_Mono } from "next/font/google"
+import { Inter, Syne } from "next/font/google"
 import "./globals.css"
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+  display: "swap",
 })
 
-const spaceMono = Space_Mono({
-  weight: ["400", "700"],
+const syne = Syne({
   subsets: ["latin"],
-  variable: "--font-space-mono",
+  variable: "--font-syne",
+  display: "swap",
 })
 
 export const metadata = {
-  title: "Utility - Top Mobile App Development Agency in New York",
+  title: "Ephicode - Top Mobile App Development Agency",
   description:
-    "Utility crafts award-winning custom digital products driven by strategy, design and technology",
+    "Ephicode crafts award-winning custom digital products driven by strategy, design and technology",
 }
 
 export const viewport = {
@@ -25,7 +26,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${spaceMono.variable} font-sans antialiased`}>
+      <body className={`${syne.variable} ${inter.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

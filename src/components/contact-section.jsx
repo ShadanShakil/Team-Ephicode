@@ -10,7 +10,7 @@ export function ContactSection() {
     <section className="py-20 md:py-28 lg:py-36 px-5 md:px-10 lg:px-16" id="contact" ref={ref}>
       <div className="max-w-[1400px] mx-auto">
         <div className={`flex flex-col items-center text-center transition-all duration-700 ease-out ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <h2 className="text-[2.5rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-[1.05] text-foreground tracking-tight">
+          <h2 className="text-[2.5rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-[1.05] text-foreground tracking-tight font-inter">
             {"Let's talk "}
             <span className="text-accent inline-block animate-pulse">--</span>
           </h2>
