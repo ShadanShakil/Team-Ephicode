@@ -1,24 +1,25 @@
 "use client"
 
 import { ArrowUpRight } from "lucide-react"
+import Link from "next/link"
 
 const footerLinks = [
   {
     title: "Company",
     links: [
-      { label: "About", href: "#about" },
-      { label: "Careers", href: "#careers" },
-      { label: "Insights", href: "#" },
-      { label: "Contact", href: "#contact" },
+      { label: "About", href: "/about" },
+      { label: "Careers", href: "/careers" },
+      { label: "Insights", href: "/insights" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
     title: "Services",
     links: [
-      { label: "Technology", href: "#" },
-      { label: "Experience", href: "#" },
-      { label: "Strategy", href: "#" },
-      { label: "Growth", href: "#" },
+      { label: "Technology", href: "/services" },
+      { label: "Experience", href: "/services" },
+      { label: "Strategy", href: "/services" },
+      { label: "Growth", href: "/services" },
     ],
   },
   {
@@ -38,10 +39,10 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
           {/* Brand column */}
           <div className="col-span-2 md:col-span-1">
-            <a href="#" className="flex items-center gap-2 text-foreground">
+            <Link href="/" className="flex items-center gap-2 text-foreground">
               <img src="/logo.svg" alt="Logo" className="w-10 h-10" />
               <span className="text-base font-semibold tracking-tight">Ephicode</span>
-            </a>
+            </Link>
             <p className="mt-4 text-[13px] text-muted-foreground leading-relaxed max-w-[240px]">
               Award-winning mobile app development agency in New York.
             </p>
@@ -56,13 +57,23 @@ export function Footer() {
               <ul className="flex flex-col gap-2.5">
                 {group.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="group inline-flex items-center gap-1 text-[13px] text-muted-foreground hover:text-foreground transition-colors"
-                    >
-                      {link.label}
-                      <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
-                    </a>
+                    {link.href.startsWith("#") ? (
+                      <a
+                        href={link.href}
+                        className="group inline-flex items-center gap-1 text-[13px] text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.label}
+                        <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                      </a>
+                    ) : (
+                      <Link
+                        href={link.href}
+                        className="group inline-flex items-center gap-1 text-[13px] text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        {link.label}
+                        <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all" />
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -76,12 +87,12 @@ export function Footer() {
             {"© 2024 Utility. All rights reserved."}
           </p>
           <div className="flex items-center gap-6">
-            <a href="#" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
+            <Link href="#" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
+            </Link>
+            <Link href="#" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
               Terms of Service
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -2,10 +2,12 @@
 
 import { ArrowUpRight } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
+import Link from "next/link"
 
 const services = [
   {
     label: "Tech Development",
+    slug: "tech-development",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="16 18 22 12 16 6" />
@@ -15,6 +17,7 @@ const services = [
   },
   {
     label: "Product Design",
+    slug: "product-design",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 19l7-7 3 3-7 7-3-3z" />
@@ -26,6 +29,7 @@ const services = [
   },
   {
     label: "AI Solutions",
+    slug: "ai-solutions",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M12 2a4 4 0 0 1 4 4c0 1.95-1.4 3.58-3.25 3.93L12 22" />
@@ -37,6 +41,7 @@ const services = [
   },
   {
     label: "Growth Marketing",
+    slug: "growth-marketing",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
@@ -45,6 +50,7 @@ const services = [
   },
   {
     label: "Digital Transformation",
+    slug: "digital-transformation",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="3" width="20" height="14" rx="2" ry="2" />
@@ -69,27 +75,27 @@ export function ServicesOverview() {
 
         <div className="mt-10 md:mt-14 lg:mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
           {services.map((service, i) => (
-            <div
+            <Link
               key={service.label}
-              className={`group flex flex-col gap-5 p-5 md:p-6 rounded-xl border border-border/70 bg-card/50 hover:border-accent/40 hover:bg-card transition-all duration-500 cursor-pointer ${
-                isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
+              href={`/services/${service.slug}`}
+              className={`group flex flex-col gap-5 p-5 md:p-6 rounded-xl border border-border/70 bg-card/50 hover:border-accent/40 hover:bg-card transition-all duration-500 cursor-pointer ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+                }`}
               style={{ transitionDelay: `${(i + 1) * 80}ms` }}
             >
               <div className="text-accent">{service.icon}</div>
               <span className="text-[13px] md:text-sm font-medium text-foreground">{service.label}</span>
-            </div>
+            </Link>
           ))}
         </div>
 
         <div className="mt-8 md:mt-10">
-          <a
-            href="#services"
+          <Link
+            href="/services"
             className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
           >
             View all services
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

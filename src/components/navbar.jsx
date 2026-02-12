@@ -2,14 +2,15 @@
 
 import { useState, useEffect } from "react"
 import { Menu, X, ArrowUpRight } from "lucide-react"
+import Link from "next/link"
 
 const navLinks = [
-  { label: "Work", href: "#work" },
-  { label: "Services", href: "#services" },
-  { label: "About", href: "#about" },
-  { label: "Insights", href: "#" },
+  { label: "Work", href: "/work" },
+  { label: "Services", href: "/services" },
+  { label: "About", href: "/about" },
+  { label: "Insights", href: "/insights" },
   { label: "Learn", href: "#" },
-  { label: "Careers", href: "#careers" },
+  { label: "Careers", href: "/careers" },
 ]
 
 const socialLinks = [
@@ -39,20 +40,22 @@ export function Navbar() {
       <div className="fixed top-0 left-0 right-0 z-[60] hidden lg:block">
         <div className={`transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
           <div className="flex items-center justify-between px-6 lg:px-10 xl:px-16 py-4">
-            <a href="#" className="flex items-center gap-2.5 text-foreground">
+            <Link href="/" className="flex items-center gap-2.5 text-foreground">
               <img src="/logo.svg" alt="Logo" className="w-10 h-10" />
-            </a>
+            </Link>
 
             <div className="flex items-center gap-8">
               <nav className="flex items-center gap-1">
-                <a href="#about" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-secondary/50">Our Company</a>
-                <a href="#services" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-secondary/50">Our Expertise</a>
-                <a href="#work" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-secondary/50">Our Work</a>
+                <Link href="/about" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-secondary/50">Our Company</Link>
+                <Link href="/services" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-secondary/50">Our Expertise</Link>
+                <Link href="/work" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-secondary/50">Our Work</Link>
+                <Link href="/insights" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-secondary/50">Insights</Link>
+                <Link href="/careers" className="text-[13px] text-muted-foreground hover:text-foreground transition-colors px-4 py-2 rounded-full hover:bg-secondary/50">Careers</Link>
               </nav>
-              <a href="#contact" className="group flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-full text-[13px] font-medium hover:bg-foreground/90 transition-colors">
+              <Link href="/contact" className="group flex items-center gap-2 bg-foreground text-background px-5 py-2.5 rounded-full text-[13px] font-medium hover:bg-foreground/90 transition-colors">
                 Contact
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
@@ -62,12 +65,9 @@ export function Navbar() {
       <div className="fixed top-0 left-0 right-0 z-[60] lg:hidden">
         <div className={`transition-all duration-300 ${scrolled && !isOpen ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
           <div className="flex items-center justify-between px-5 py-4">
-            <a href="#" className="flex items-center text-foreground z-[70]">
-              <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
-                <rect width="32" height="32" rx="8" fill="currentColor" />
-                <path d="M8 9h3.5v8.5a4.5 4.5 0 009 0V9H24v8.5a8 8 0 01-16 0V9z" fill="hsl(var(--background))" />
-              </svg>
-            </a>
+            <Link href="/" className="flex items-center text-foreground z-[70]">
+              <img src="/logo.svg" alt="Logo" className="w-10 h-10" />
+            </Link>
             <button
               type="button"
               onClick={() => setIsOpen(!isOpen)}
@@ -88,7 +88,7 @@ export function Navbar() {
         <div className="flex flex-col justify-between h-full pt-24 pb-10 px-6">
           <nav className="flex flex-col gap-0">
             {navLinks.map((link, i) => (
-              <a
+              <Link
                 key={link.label}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
@@ -100,19 +100,19 @@ export function Navbar() {
                 }}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           <div className="flex flex-col gap-6" style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.5s ease 0.3s" }}>
-            <a
-              href="#contact"
+            <Link
+              href="/contact"
               onClick={() => setIsOpen(false)}
               className="group inline-flex items-center gap-2 bg-foreground text-background px-6 py-3.5 rounded-full text-sm font-medium w-fit hover:bg-foreground/90 transition-colors"
             >
               Start a project
               <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </a>
+            </Link>
             <div className="flex items-center gap-6 pt-2">
               {socialLinks.map((link) => (
                 <a key={link.label} href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">

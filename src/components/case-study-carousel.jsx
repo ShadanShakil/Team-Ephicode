@@ -3,6 +3,7 @@
 import { useRef, useState, useCallback } from "react"
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
+import Link from "next/link"
 
 export function CaseStudyCarousel({ title, subtitle, mobileSubtitle, cases }) {
   const scrollRef = useRef(null)
@@ -75,9 +76,8 @@ export function CaseStudyCarousel({ title, subtitle, mobileSubtitle, cases }) {
           <a
             key={item.name}
             href="#"
-            className={`group flex-shrink-0 w-[250px] md:w-[310px] lg:w-[350px] rounded-2xl overflow-hidden transition-all duration-600 ease-out ${
-              isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-            }`}
+            className={`group flex-shrink-0 w-[250px] md:w-[310px] lg:w-[350px] rounded-2xl overflow-hidden transition-all duration-600 ease-out ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
             style={{ transitionDelay: `${Math.min(i, 5) * 60}ms` }}
           >
             <div className="aspect-[3/4] w-full relative overflow-hidden" style={{ backgroundColor: item.color }}>
@@ -106,10 +106,10 @@ export function CaseStudyCarousel({ title, subtitle, mobileSubtitle, cases }) {
 
       {/* View All link */}
       <div className="px-5 md:px-10 lg:px-16 mt-6 md:mt-8 max-w-[1400px] mx-auto">
-        <a href="#" className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
+        <Link href="/work" className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors">
           View All
           <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-        </a>
+        </Link>
       </div>
     </section>
   )
