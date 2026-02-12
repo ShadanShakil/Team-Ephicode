@@ -10,7 +10,7 @@ const clients = [
 ]
 
 export function ClientsGrid() {
-    const { ref, isInView } = useInView(0.1)
+    const { ref, isInView } = useInView(0)
 
     return (
         <section className="py-20 md:py-24 border-t border-border/40" ref={ref}>

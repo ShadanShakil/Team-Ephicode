@@ -5,7 +5,7 @@ import { useInView } from "@/hooks/use-in-view"
 import Link from "next/link"
 
 export function CaseStudyGrid({ cases }) {
-    const { ref, isInView } = useInView(0.1)
+    const { ref, isInView } = useInView(0)
 
     return (
         <section className="pb-20 md:pb-32 px-5 md:px-10 lg:px-16 max-w-[1400px] mx-auto overflow-hidden" ref={ref}>

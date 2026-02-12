@@ -3,7 +3,7 @@
 import { useInView } from "@/hooks/use-in-view"
 
 export function PageHeader({ title, description, badge }) {
-    const { ref, isInView } = useInView(0.1)
+    const { ref, isInView } = useInView(0)
 
     return (
         <section className="pt-32 pb-16 md:pt-40 md:pb-24 px-5 md:px-10 lg:px-16 max-w-[1400px] mx-auto" ref={ref}>

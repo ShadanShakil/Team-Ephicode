@@ -36,7 +36,7 @@ const steps = [
 ]
 
 export function ProcessSection() {
-    const { ref, isInView } = useInView(0.1)
+    const { ref, isInView } = useInView(0)
 
     return (
         <section className="py-20 md:py-32 px-5 md:px-10 lg:px-16 overflow-hidden" ref={ref}>
