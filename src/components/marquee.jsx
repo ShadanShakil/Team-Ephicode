@@ -1,5 +1,7 @@
 "use client"
 
+import { motion } from "framer-motion"
+
 const brands = [
   "Airbnb",
   "Forbes",
@@ -21,7 +23,13 @@ export function Marquee() {
   const allBrands = [...brands, ...brands, ...brands]
 
   return (
-    <div className="py-6 md:py-8 border-y border-border/60 overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.8 }}
+      className="py-6 md:py-8 border-y border-border/60 overflow-hidden"
+    >
       <div className="flex animate-marquee">
         {allBrands.map((brand, i) => (
           <span
@@ -32,6 +40,6 @@ export function Marquee() {
           </span>
         ))}
       </div>
-    </div>
+    </motion.div>
   )
 }

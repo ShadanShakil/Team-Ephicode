@@ -2,7 +2,7 @@
 
 import { useRef, useState, useCallback, useEffect } from "react"
 import { ArrowLeft, ArrowRight } from "lucide-react"
-import { useInView } from "@/hooks/use-in-view"
+import { motion } from "framer-motion"
 
 const testimonials = [
   {
@@ -53,7 +53,6 @@ export function Testimonials() {
   const scrollRef = useRef(null)
   const [canScrollLeft, setCanScrollLeft] = useState(false)
   const [canScrollRight, setCanScrollRight] = useState(true)
-  const { ref, isInView } = useInView(0.05)
 
   const checkScroll = useCallback(() => {
     if (!scrollRef.current) return
@@ -82,13 +81,15 @@ export function Testimonials() {
   }
 
   return (
-    <section className="py-16 md:py-24 lg:py-32 overflow-hidden" ref={ref}>
+    <section className="py-16 md:py-24 lg:py-32 overflow-hidden">
       {/* Header with arrows */}
       <div className="px-5 md:px-10 lg:px-16 max-w-[1400px] mx-auto">
-        <div
-          className={`flex items-end justify-between mb-8 md:mb-12 transition-all duration-700 ease-out ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="flex items-end justify-between mb-8 md:mb-12"
         >
           <div />
           <div className="flex items-center gap-2.5">
@@ -111,7 +112,7 @@ export function Testimonials() {
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-        </div>
+        </motion.div>
       </div>
 
       {/* Scrollable cards */}
@@ -121,14 +122,13 @@ export function Testimonials() {
         className="flex gap-4 md:gap-5 overflow-x-auto hide-scrollbar pl-5 md:pl-10 lg:pl-16 pr-5 md:pr-10 pb-2"
       >
         {testimonials.map((t, i) => (
-          <div
+          <motion.div
             key={`${t.name}-${i}`}
-            className={`flex-shrink-0 w-[290px] md:w-[370px] lg:w-[420px] bg-card border border-border/60 rounded-2xl p-6 md:p-7 lg:p-8 flex flex-col justify-between min-h-[280px] md:min-h-[320px] transition-all duration-700 ease-out ${
-              isInView
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-8"
-            }`}
-            style={{ transitionDelay: `${Math.min(i, 4) * 80}ms` }}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, margin: "-50px" }}
+            transition={{ duration: 0.6, delay: i * 0.1, ease: "easeOut" }}
+            className="flex-shrink-0 w-[290px] md:w-[370px] lg:w-[420px] bg-card border border-border/60 rounded-2xl p-6 md:p-7 lg:p-8 flex flex-col justify-between min-h-[280px] md:min-h-[320px]"
           >
             <div>
               {/* Quote icon */}
@@ -164,7 +164,7 @@ export function Testimonials() {
                 <p className="text-[11px] text-muted-foreground">{t.title}</p>
               </div>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

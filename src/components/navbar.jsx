@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Menu, X, ArrowUpRight } from "lucide-react"
 import Link from "next/link"
+import { motion, AnimatePresence } from "framer-motion"
 
 const navLinks = [
   { label: "Work", href: "/work" },
@@ -18,6 +19,28 @@ const socialLinks = [
   { label: "Twitter", href: "#" },
   { label: "Instagram", href: "#" },
 ]
+
+const menuVariants = {
+  initial: { opacity: 0 },
+  animate: { opacity: 1, transition: { duration: 0.3 } },
+  exit: { opacity: 0, transition: { duration: 0.3, delay: 0.3 } }
+}
+
+const linkVariants = {
+  initial: { y: 20, opacity: 0 },
+  animate: (i) => ({
+    y: 0,
+    opacity: 1,
+    transition: { delay: 0.1 + i * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }
+  }),
+  exit: { y: 20, opacity: 0, transition: { duration: 0.2 } }
+}
+
+const contentVariants = {
+  initial: { opacity: 0, y: 10 },
+  animate: { opacity: 1, y: 0, transition: { delay: 0.4, duration: 0.4 } },
+  exit: { opacity: 0, y: 10, transition: { duration: 0.2 } }
+}
 
 export function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
@@ -37,8 +60,13 @@ export function Navbar() {
   return (
     <>
       {/* Top bar - desktop only */}
-      <div className="fixed top-0 left-0 right-0 z-[60] hidden lg:block">
-        <div className={`transition-all duration-300 ${scrolled ? "bg-background/95 backdrop-blur-md border-b border-border" : "bg-transparent"}`}>
+      <motion.header
+        className={`fixed top-0 left-0 right-0 z-[60] hidden lg:block transition-colors duration-300 ${scrolled ? "bg-background/90 backdrop-blur-md border-b border-border" : "bg-transparent"}`}
+        initial={{ y: -100 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <div>
           <div className="flex items-center justify-between px-6 lg:px-10 xl:px-16 py-4">
             <Link href="/" className="flex items-center gap-2.5 text-foreground">
               <img src="/logo.svg" alt="Logo" className="w-10 h-10" />
@@ -59,7 +87,7 @@ export function Navbar() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.header>
 
       {/* Mobile nav bar */}
       <div className="fixed top-0 left-0 right-0 z-[60] lg:hidden">
@@ -84,46 +112,59 @@ export function Navbar() {
       </div>
 
       {/* Full screen mobile menu */}
-      <div className={`fixed inset-0 z-[55] bg-background transition-all duration-500 ease-in-out lg:hidden ${isOpen ? "opacity-100 visible" : "opacity-0 invisible"}`}>
-        <div className="flex flex-col justify-between h-full pt-24 pb-10 px-6">
-          <nav className="flex flex-col gap-0">
-            {navLinks.map((link, i) => (
-              <Link
-                key={link.label}
-                href={link.href}
-                onClick={() => setIsOpen(false)}
-                className="text-[2.5rem] sm:text-5xl font-medium text-foreground py-2 hover:text-accent transition-colors"
-                style={{
-                  transform: isOpen ? "translateY(0)" : "translateY(20px)",
-                  opacity: isOpen ? 1 : 0,
-                  transition: `all 0.4s ease ${i * 0.06}s`,
-                }}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 z-[55] bg-background lg:hidden"
+            variants={menuVariants}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+          >
+            <div className="flex flex-col justify-between h-full pt-28 pb-10 px-6">
+              <nav className="flex flex-col gap-0">
+                {navLinks.map((link, i) => (
+                  <motion.div
+                    key={link.label}
+                    custom={i}
+                    variants={linkVariants}
+                  >
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsOpen(false)}
+                      className="block text-[2.5rem] sm:text-5xl font-medium text-foreground py-2 hover:text-accent transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
+                ))}
+              </nav>
 
-          <div className="flex flex-col gap-6" style={{ opacity: isOpen ? 1 : 0, transition: "opacity 0.5s ease 0.3s" }}>
-            <Link
-              href="/contact"
-              onClick={() => setIsOpen(false)}
-              className="group inline-flex items-center gap-2 bg-foreground text-background px-6 py-3.5 rounded-full text-sm font-medium w-fit hover:bg-foreground/90 transition-colors"
-            >
-              Start a project
-              <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-            </Link>
-            <div className="flex items-center gap-6 pt-2">
-              {socialLinks.map((link) => (
-                <a key={link.label} href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                  {link.label}
-                </a>
-              ))}
+              <motion.div
+                className="flex flex-col gap-6"
+                variants={contentVariants}
+              >
+                <Link
+                  href="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="group inline-flex items-center gap-2 bg-foreground text-background px-6 py-3.5 rounded-full text-sm font-medium w-fit hover:bg-foreground/90 transition-colors"
+                >
+                  Start a project
+                  <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </Link>
+                <div className="flex items-center gap-6 pt-2">
+                  {socialLinks.map((link) => (
+                    <a key={link.label} href={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+                <p className="text-xs text-muted-foreground/60">{"© 2024 Utility"}</p>
+              </motion.div>
             </div>
-            <p className="text-xs text-muted-foreground/60">{"© 2024 Utility"}</p>
-          </div>
-        </div>
-      </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }

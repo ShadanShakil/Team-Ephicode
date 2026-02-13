@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowUpRight } from "lucide-react"
-import { useInView } from "@/hooks/use-in-view"
+import { motion } from "framer-motion"
 import Link from "next/link"
 
 const services = [
@@ -61,34 +61,68 @@ const services = [
   },
 ]
 
-export function ServicesOverview() {
-  const { ref, isInView } = useInView(0.15)
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+}
 
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+}
+
+export function ServicesOverview() {
   return (
-    <section className="py-20 md:py-28 lg:py-36 px-5 md:px-10 lg:px-16" ref={ref}>
+    <section className="py-20 md:py-28 lg:py-36 px-5 md:px-10 lg:px-16" id="services">
       <div className="max-w-[1400px] mx-auto">
-        <div className={`transition-all duration-700 ease-out ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="text-2xl md:text-[2rem] lg:text-[2.5rem] font-medium leading-[1.2] max-w-3xl text-balance text-foreground">
             Drawing on decades of expertise, Utility builds new products with innovative client partners.
           </h2>
-        </div>
+        </motion.div>
 
-        <div className="mt-10 md:mt-14 lg:mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-50px" }}
+          className="mt-10 md:mt-14 lg:mt-16 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4"
+        >
           {services.map((service, i) => (
-            <Link
-              key={service.label}
-              href={`/services/${service.slug}`}
-              className={`group flex flex-col gap-5 p-5 md:p-6 rounded-xl border border-border/70 bg-card/50 hover:border-accent/40 hover:bg-card transition-all duration-500 cursor-pointer ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-                }`}
-              style={{ transitionDelay: `${(i + 1) * 80}ms` }}
-            >
-              <div className="text-accent">{service.icon}</div>
-              <span className="text-[13px] md:text-sm font-medium text-foreground">{service.label}</span>
-            </Link>
+            <motion.div key={service.label} variants={itemVariants} className="[will-change:transform,opacity]">
+              <Link
+                href={`/services/${service.slug}`}
+                className="group flex flex-col gap-5 p-5 md:p-6 rounded-xl border border-border/70 bg-card/50 hover:border-accent/40 hover:bg-card transition-all duration-300 cursor-pointer h-full"
+              >
+                <div className="text-accent transform group-hover:scale-110 group-hover:-rotate-3 transition-transform duration-300 ease-out origin-left">{service.icon}</div>
+                <span className="text-[13px] md:text-sm font-medium text-foreground">{service.label}</span>
+              </Link>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
 
-        <div className="mt-8 md:mt-10">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 0.6 }}
+          className="mt-8 md:mt-10"
+        >
           <Link
             href="/services"
             className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -96,7 +130,7 @@ export function ServicesOverview() {
             View all services
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </Link>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

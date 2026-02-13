@@ -1,36 +1,30 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef } from "react"
 import { ArrowUpRight } from "lucide-react"
-import { useInView } from "@/hooks/use-in-view"
+import { useInView, useMotionValue, useSpring, motion } from "framer-motion"
 
-function AnimatedNumber({ target, suffix = "", isInView }) {
-  const [current, setCurrent] = useState(0)
-  const hasAnimated = useRef(false)
+function AnimatedNumber({ value }) {
+  const ref = useRef(null)
+  const motionValue = useMotionValue(0)
+  const springValue = useSpring(motionValue, { duration: 2500, bounce: 0.1 })
+  const isInView = useInView(ref, { once: true, margin: "-100px" })
 
   useEffect(() => {
-    if (!isInView || hasAnimated.current) return
-    hasAnimated.current = true
-    const duration = 2000
-    const startTime = performance.now()
-
-    function animate(now) {
-      const elapsed = now - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      const eased = 1 - Math.pow(1 - progress, 3)
-      setCurrent(Math.floor(eased * target))
-      if (progress < 1) requestAnimationFrame(animate)
+    if (isInView) {
+      motionValue.set(value)
     }
+  }, [isInView, value, motionValue])
 
-    requestAnimationFrame(animate)
-  }, [isInView, target])
+  useEffect(() => {
+    return springValue.on("change", (latest) => {
+      if (ref.current) {
+        ref.current.textContent = Math.floor(latest)
+      }
+    })
+  }, [springValue])
 
-  return (
-    <span>
-      {current}
-      {suffix}
-    </span>
-  )
+  return <span ref={ref} />
 }
 
 const stats = [
@@ -40,16 +34,16 @@ const stats = [
 ]
 
 export function Stats() {
-  const { ref, isInView } = useInView(0.15)
-
   return (
-    <section className="py-20 md:py-28 lg:py-36 px-5 md:px-10 lg:px-16" ref={ref}>
+    <section className="py-20 md:py-28 lg:py-36 px-5 md:px-10 lg:px-16">
       <div className="max-w-[1400px] mx-auto">
         {/* Section header */}
-        <div
-          className={`flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12 md:mb-16 lg:mb-20 transition-all duration-700 ease-out ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12 md:mb-16 lg:mb-20"
         >
           <div>
             <span className="text-[13px] text-accent uppercase tracking-[0.15em] font-medium">
@@ -68,27 +62,23 @@ export function Stats() {
             Our work
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
-        </div>
+        </motion.div>
 
         {/* Stats grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-0 md:divide-x md:divide-border/50">
           {stats.map((stat, i) => (
-            <div
+            <motion.div
               key={stat.sublabel}
-              className={`flex flex-col gap-2 md:px-8 lg:px-12 first:pl-0 transition-all duration-700 ease-out ${
-                isInView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${(i + 1) * 150}ms` }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: i * 0.2, ease: "easeOut" }}
+              className="flex flex-col gap-2 md:px-8 lg:px-12 first:pl-0"
             >
               <div className="flex items-baseline gap-1">
                 <span className="text-[3.5rem] md:text-[4.5rem] lg:text-[5.5rem] font-medium text-foreground leading-none tracking-tight">
-                  <AnimatedNumber
-                    target={stat.value}
-                    suffix={stat.suffix}
-                    isInView={isInView}
-                  />
+                  <AnimatedNumber value={stat.value} />
+                  {stat.suffix}
                 </span>
                 {stat.unit && (
                   <span className="text-base md:text-lg text-muted-foreground ml-1.5">
@@ -99,12 +89,18 @@ export function Stats() {
               <span className="text-[13px] text-muted-foreground">
                 {stat.sublabel}
               </span>
-            </div>
+            </motion.div>
           ))}
         </div>
 
         {/* Bottom link */}
-        <div className="mt-10 md:mt-14">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6, duration: 1 }}
+          className="mt-10 md:mt-14"
+        >
           <a
             href="#work"
             className="group inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground transition-colors"
@@ -112,7 +108,7 @@ export function Stats() {
             Our work
             <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
-        </div>
+        </motion.div>
       </div>
     </section>
   )

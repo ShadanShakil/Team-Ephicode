@@ -1,7 +1,7 @@
 "use client"
 
 import { ArrowUpRight } from "lucide-react"
-import { useInView } from "@/hooks/use-in-view"
+import { motion } from "framer-motion"
 
 const awards = [
   { year: "2024", title: "Webby Awards Agency of the Year" },
@@ -11,16 +11,16 @@ const awards = [
 ]
 
 export function Awards() {
-  const { ref, isInView } = useInView(0.15)
-
   return (
-    <section className="py-16 md:py-24 lg:py-32 px-5 md:px-10 lg:px-16" ref={ref}>
+    <section className="py-16 md:py-24 lg:py-32 px-5 md:px-10 lg:px-16">
       <div className="max-w-[1400px] mx-auto">
         {/* Top pill link */}
-        <div
-          className={`mb-8 md:mb-10 transition-all duration-700 ease-out ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-8 md:mb-10"
         >
           <a
             href="#about"
@@ -29,32 +29,33 @@ export function Awards() {
             About us
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
-        </div>
+        </motion.div>
 
         {/* Section heading */}
-        <div
-          className={`mb-10 md:mb-14 transition-all duration-700 delay-100 ease-out ${
-            isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mb-10 md:mb-14"
         >
           <h2 className="text-[1.75rem] md:text-[2.25rem] lg:text-[2.75rem] font-medium leading-[1.1] text-foreground">
             Pushing boundaries.
             <br />
             Getting recognition.
           </h2>
-        </div>
+        </motion.div>
 
         {/* Awards cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {awards.map((award, i) => (
-            <div
+            <motion.div
               key={award.title}
-              className={`group bg-card border border-border/60 rounded-xl p-5 md:p-6 hover:border-accent/30 transition-all duration-500 cursor-default ${
-                isInView
-                  ? "opacity-100 translate-y-0"
-                  : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${(i + 1) * 100}ms` }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.3 + (i * 0.1) }}
+              className="group bg-card border border-border/60 rounded-xl p-5 md:p-6 hover:border-accent/30 transition-colors duration-500 cursor-default"
             >
               <span className="inline-block text-[11px] text-accent font-mono bg-accent/10 px-2.5 py-1 rounded-full">
                 {award.year}
@@ -62,7 +63,7 @@ export function Awards() {
               <h3 className="mt-3 text-sm md:text-base font-medium text-foreground leading-snug">
                 {award.title}
               </h3>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 import { LoadingScreen } from "@/components/loading-screen"
 
 export function PageWrapper({ children }) {
@@ -9,10 +10,20 @@ export function PageWrapper({ children }) {
   return (
     <>
       <LoadingScreen onComplete={() => setIsLoading(false)} />
-      
-      <div className={`transition-opacity duration-700 ${isLoading ? "opacity-0" : "opacity-100"}`}>
-        {children}
-      </div>
+
+      <AnimatePresence mode="wait">
+        {!isLoading && (
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="[will-change:transform,opacity]"
+          >
+            {children}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   )
 }

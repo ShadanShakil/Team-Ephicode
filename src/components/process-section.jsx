@@ -1,6 +1,6 @@
 "use client"
 
-import { useInView } from "@/hooks/use-in-view"
+import { motion } from "framer-motion"
 
 const steps = [
     {
@@ -35,38 +35,67 @@ const steps = [
     },
 ]
 
-export function ProcessSection() {
-    const { ref, isInView } = useInView(0)
+const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.15,
+            delayChildren: 0.2
+        }
+    }
+}
 
+const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.6, ease: "easeOut" }
+    }
+}
+
+export function ProcessSection() {
     return (
-        <section className="py-20 md:py-32 px-5 md:px-10 lg:px-16 overflow-hidden" ref={ref}>
+        <section className="py-20 md:py-32 px-5 md:px-10 lg:px-16 overflow-hidden">
             <div className="max-w-[1400px] mx-auto">
-                <div className={`transition-all duration-700 ease-out ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                >
                     <span className="text-[13px] text-accent uppercase tracking-[0.15em] font-medium block mb-8">
                         Our Process
                     </span>
                     <h2 className="text-3xl md:text-5xl font-medium leading-[1.1] mb-16 md:mb-24 max-w-4xl text-balance">
                         We follow a proven methodology to deliver exceptional results.
                     </h2>
-                </div>
+                </motion.div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+                <motion.div
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-10%" }}
+                    className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16"
+                >
                     {steps.map((step, i) => (
-                        <div
+                        <motion.div
                             key={step.number}
-                            className={`group transition-all duration-700 ease-out ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
-                            style={{ transitionDelay: `${(i + 1) * 100}ms` }}
+                            variants={itemVariants}
+                            className="group"
                         >
-                            <div className="text-6xl md:text-8xl font-bold text-border/30 mb-6 group-hover:text-accent/20 transition-colors">
+                            <div className="text-6xl md:text-8xl font-bold text-border/30 mb-6 group-hover:text-accent/20 transition-colors duration-500">
                                 {step.number}
                             </div>
                             <h3 className="text-xl md:text-2xl font-semibold mb-4">{step.title}</h3>
                             <p className="text-muted-foreground leading-relaxed">
                                 {step.description}
                             </p>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
+                </motion.div>
             </div>
         </section>
     )
