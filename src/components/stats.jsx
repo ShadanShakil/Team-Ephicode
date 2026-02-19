@@ -8,7 +8,7 @@ function AnimatedNumber({ value }) {
   const ref = useRef(null)
   const motionValue = useMotionValue(0)
   const springValue = useSpring(motionValue, { duration: 2500, bounce: 0.1 })
-  const isInView = useInView(ref, { once: true, margin: "-100px" })
+  const isInView = useInView(ref, { once: true, margin: "-20px" })
 
   useEffect(() => {
     if (isInView) {
@@ -24,7 +24,14 @@ function AnimatedNumber({ value }) {
     })
   }, [springValue])
 
-  return <span ref={ref} />
+  return (
+    <span
+      ref={ref}
+      className="inline-block min-w-[1ch]"
+    >
+      0
+    </span>
+  )
 }
 
 const stats = [

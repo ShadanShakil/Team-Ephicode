@@ -1,5 +1,6 @@
 import { Inter, Syne } from "next/font/google"
 import "./globals.css"
+import BackToTop from "@/components/back-to-top"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,6 +18,9 @@ export const metadata = {
   title: "Ephicode - Top Mobile App Development Agency",
   description:
     "Ephicode crafts award-winning custom digital products driven by strategy, design and technology",
+  icons: {
+    icon: "/logo.svg",
+  },
 }
 
 export const viewport = {
@@ -28,6 +32,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={`${syne.variable} ${inter.variable} font-sans antialiased`}>
         {children}
+        <BackToTop />
       </body>
     </html>
   )

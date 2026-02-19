@@ -11,19 +11,17 @@ export function PageWrapper({ children }) {
     <>
       <LoadingScreen onComplete={() => setIsLoading(false)} />
 
-      <AnimatePresence mode="wait">
-        {!isLoading && (
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="[will-change:transform,opacity]"
-          >
-            {children}
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <motion.div
+        initial={{ opacity: 0, y: 15 }}
+        animate={{
+          opacity: isLoading ? 0 : 1,
+          y: isLoading ? 15 : 0
+        }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="[will-change:transform,opacity]"
+      >
+        {children}
+      </motion.div>
     </>
   )
 }
