@@ -17,8 +17,8 @@ export function AboutCta() {
           <div>
             <span className="text-[13px] text-accent uppercase tracking-[0.15em] font-medium">About Us</span>
             <h2 className="mt-3 text-xl md:text-2xl lg:text-[2rem] font-medium leading-[1.2] text-foreground text-balance">
-              We look for interesting challenges
-              <br className="hidden md:block" /> that move people forward.
+              A Distributed Team with a Unified Vision.
+              <br className="hidden md:block" /> Built in the cloud. Built for the world.
             </h2>
           </div>
           <div className="flex flex-wrap gap-3">

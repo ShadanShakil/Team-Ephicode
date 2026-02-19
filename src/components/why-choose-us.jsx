@@ -5,28 +5,28 @@ import { Check } from "lucide-react"
 
 const benefits = [
     {
-        title: "Client-Centric Approach",
-        description: "We prioritize your business goals and user needs above all else. Your success is our success."
+        title: "24/7 Digital Cycle",
+        description: "Our global team ensures your project never sleeps. With distributed talent across time zones, we deliver continuous progress around the clock."
     },
     {
-        title: "Agile Methodology",
-        description: "We work in sprints to deliver value quickly and adapt to changing requirements."
+        title: "Future-Proof Tech",
+        description: "Built on cutting-edge frameworks for unmatched speed and interaction design. We use the latest technologies so your product stays ahead of the curve."
     },
     {
-        title: "Top-Tier Talent",
-        description: "Our team consists of senior engineers, designers, and strategists with years of experience."
+        title: "ROI-Centric",
+        description: "We don't just deliver assets; we deliver measurable business growth. Every decision is anchored in data and oriented toward your bottom line."
     },
     {
-        title: "Transparency",
-        description: "We believe in open communication. You'll always know the status of your project."
+        title: "Radical Transparency",
+        description: "We believe in open communication. You'll always know the status of your project, what's next, and why every decision was made."
     },
     {
-        title: "Innovation",
-        description: "We stay ahead of the curve, leveraging the latest technologies to solve complex problems."
+        title: "Global Reach",
+        description: "Location shouldn't limit innovation. We empower founders and enterprises worldwide with the same high-tier resources used by the top 1% of global brands."
     },
     {
-        title: "End-to-End Support",
-        description: "From concept to launch and beyond, we are with you every step of the way."
+        title: "End-to-End Delivery",
+        description: "From concept and strategy to launch and growth — we are with you every step of the way with a unified, senior team that owns the outcome."
     }
 ]
 

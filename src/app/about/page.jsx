@@ -16,28 +16,28 @@ export default function AboutPage() {
 
                 <PageHeader
                     title="About Us"
-                    description="We are a team of designers, engineers, and strategists passionate about building digital products that matter."
+                    description="A collective of elite developers, creative rebels, and data nerds — empowering founders and enterprises with world-class digital solutions."
                     badge="Company"
                 />
 
                 <section className="px-5 md:px-10 lg:px-16 pb-20 max-w-[1400px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20">
                         <div>
-                            <h2 className="text-2xl font-medium mb-6">Our Philosophy</h2>
+                            <h2 className="text-2xl font-medium mb-6">Our Story</h2>
                             <p className="text-muted-foreground leading-relaxed mb-6">
-                                We believe that great software is born from a deep understanding of the problem space and a relentless focus on the user experience. We don't just build apps; we build businesses.
+                                Team Ephicode wasn't built in a boardroom — it was built in the cloud. We are a collective of elite developers, creative rebels, and data nerds who believe that location shouldn't limit innovation.
                             </p>
                             <p className="text-muted-foreground leading-relaxed">
-                                Our process is collaborative, transparent, and iterative. We work closely with our clients to ensure that we are always aligned on the vision and the goals.
+                                Our mission is to empower founders and enterprises with the same high-tier technical and creative resources used by the world's top 1% of brands.
                             </p>
                         </div>
                         <div>
-                            <h2 className="text-2xl font-medium mb-6">Our Culture</h2>
+                            <h2 className="text-2xl font-medium mb-6">Our Values</h2>
                             <p className="text-muted-foreground leading-relaxed mb-6">
-                                We are a remote-first company with a global team. We value diversity, inclusion, and a healthy work-life balance. We believe that happy people make better software.
+                                <strong className="text-foreground">Radical Transparency.</strong> We believe in open communication and honest partnerships. You'll always know exactly where your project stands.
                             </p>
                             <p className="text-muted-foreground leading-relaxed">
-                                We are constantly learning and evolving. We stay up-to-date with the latest technologies and best practices to ensure that we are delivering the best possible solutions to our clients.
+                                <strong className="text-foreground">Technical Precision & Relentless Speed.</strong> We stay up-to-date with the latest technologies to deliver fast, robust, and beautiful products — without cutting corners.
                             </p>
                         </div>
                     </div>

@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from "framer-motion"
 const rotatingWords = [
   "Tech Ventures",
   "Digital Products",
-  "World Class Apps",
+  "World-Class Apps",
   "AI Solutions",
-  "Innovative Platforms",
+  "Global Brands",
 ]
 
 export function Hero() {
@@ -63,8 +63,7 @@ export function Hero() {
           className="mt-8 md:mt-10"
         >
           <p className="text-sm md:text-base lg:text-lg text-muted-foreground max-w-[520px] leading-relaxed">
-            Utility crafts award-winning custom digital products driven by
-            strategy, design and technology
+            We bridge the gap between technical complexity and creative impact. From custom software to viral content, we scale brands across the global map.
           </p>
         </motion.div>
       </div>

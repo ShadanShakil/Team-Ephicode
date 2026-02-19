@@ -11,11 +11,11 @@ export function ContactSection() {
       <div className="max-w-[1400px] mx-auto">
         <div className={`flex flex-col items-center text-center transition-all duration-700 ease-out ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <h2 className="text-[2.5rem] md:text-[3.5rem] lg:text-[5rem] font-medium leading-[1.05] text-foreground tracking-tight font-inter">
-            {"Let's talk "}
-            <span className="text-accent inline-block animate-pulse">--</span>
+            {"Let's build something "}
+            <span className="text-accent inline-block animate-pulse">iconic.</span>
           </h2>
-          <p className="mt-4 md:mt-6 text-sm md:text-base text-muted-foreground">
-            {"We'd love to hear about your project"}
+          <p className="mt-4 md:mt-6 text-sm md:text-base text-muted-foreground max-w-lg">
+            {"Ready to go borderless? Tell us about your vision, and our global strategy team will reach out within 12 hours."}
           </p>
           <a
             href="#"

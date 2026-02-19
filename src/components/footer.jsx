@@ -16,17 +16,17 @@ const footerLinks = [
   {
     title: "Services",
     links: [
-      { label: "Technology", href: "/services" },
-      { label: "Experience", href: "/services" },
-      { label: "Strategy", href: "/services" },
-      { label: "Growth", href: "/services" },
+      { label: "Tech Development", href: "/services" },
+      { label: "Video & Post-Production", href: "/services" },
+      { label: "Global Growth & Ads", href: "/services" },
+      { label: "Management Systems", href: "/services" },
     ],
   },
   {
     title: "Connect",
     links: [
       { label: "LinkedIn", href: "#" },
-      { label: "Twitter", href: "#" },
+      { label: "Twitter / X", href: "#" },
       { label: "Instagram", href: "#" },
     ],
   },
@@ -44,7 +44,7 @@ export function Footer() {
               <span className="text-base font-semibold tracking-tight">Ephicode</span>
             </Link>
             <p className="mt-4 text-[13px] text-muted-foreground leading-relaxed max-w-[240px]">
-              Award-winning mobile app development agency in New York.
+              Global digital tech & creative agency. Built for speed, engineered for growth.
             </p>
           </div>
 
@@ -84,7 +84,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 md:mt-16 pt-5 border-t border-border/40 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
           <p className="text-[11px] text-muted-foreground/60">
-            {"© 2024 Utility. All rights reserved."}
+            {"© 2025 Ephicode. All rights reserved."}
           </p>
           <div className="flex items-center gap-6">
             <Link href="#" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">

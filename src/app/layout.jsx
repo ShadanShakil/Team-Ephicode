@@ -15,9 +15,9 @@ const syne = Syne({
 })
 
 export const metadata = {
-  title: "Ephicode - Top Mobile App Development Agency",
+  title: "Ephicode | Global Digital Tech & Creative Agency",
   description:
-    "Ephicode crafts award-winning custom digital products driven by strategy, design and technology",
+    "Ephicode provides high-performance Web/App development, Video Editing, and Performance Marketing for global brands. Built for speed, engineered for growth.",
   icons: {
     icon: "/logo.svg",
   },
@@ -33,8 +33,8 @@ export const metadata = {
     },
   },
   openGraph: {
-    title: "Ephicode - Top Mobile App Development Agency",
-    description: "Ephicode crafts award-winning custom digital products driven by strategy, design and technology",
+    title: "Ephicode | Global Digital Tech & Creative Agency",
+    description: "Ephicode provides high-performance Web/App development, Video Editing, and Performance Marketing for global brands. Built for speed, engineered for growth.",
     url: "https://team-ephicode.vercel.app",
     siteName: "Ephicode",
     type: "website",

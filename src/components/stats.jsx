@@ -54,12 +54,12 @@ export function Stats() {
         >
           <div>
             <span className="text-[13px] text-accent uppercase tracking-[0.15em] font-medium">
-              {"Where we've been"}
+              {"Proven Results. Worldwide."}
             </span>
             <h2 className="mt-3 text-[1.75rem] md:text-[2.25rem] lg:text-[2.75rem] font-medium leading-[1.1] text-foreground text-balance">
-              We take pride in delivering exceptional
-              <br className="hidden md:block" /> solutions that exceed
-              expectations.
+              We don't just deliver assets —
+              <br className="hidden md:block" /> we deliver measurable
+              business growth.
             </h2>
           </div>
           <a

@@ -59,6 +59,38 @@ const services = [
       </svg>
     ),
   },
+  {
+    label: "Video & Post-Production",
+    slug: "video-post-production",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <polygon points="23 7 16 12 23 17 23 7" />
+        <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+      </svg>
+    ),
+  },
+  {
+    label: "Global Growth & Ads",
+    slug: "global-growth-ads",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <circle cx="12" cy="12" r="10" />
+        <line x1="2" y1="12" x2="22" y2="12" />
+        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+      </svg>
+    ),
+  },
+  {
+    label: "Management Systems",
+    slug: "management-systems",
+    icon: (
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+        <path d="M3 3h18v18H3z" />
+        <path d="M3 9h18" />
+        <path d="M9 21V9" />
+      </svg>
+    ),
+  },
 ]
 
 const containerVariants = {
@@ -92,7 +124,7 @@ export function ServicesOverview() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-2xl md:text-[2rem] lg:text-[2.5rem] font-medium leading-[1.2] max-w-3xl text-balance text-foreground">
-            Drawing on decades of expertise, Utility builds new products with innovative client partners.
+            We Code. We Create. We Grow. — Scaling brands across the global map.
           </h2>
         </motion.div>
 
