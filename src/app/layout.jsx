@@ -21,6 +21,24 @@ export const metadata = {
   icons: {
     icon: "/logo.svg",
   },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  openGraph: {
+    title: "Ephicode - Top Mobile App Development Agency",
+    description: "Ephicode crafts award-winning custom digital products driven by strategy, design and technology",
+    url: "https://team-ephicode.vercel.app",
+    siteName: "Ephicode",
+    type: "website",
+  },
 }
 
 export const viewport = {
@@ -30,6 +48,14 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <noscript>
+          <style>{`
+            #loading-screen { display: none !important; }
+            #content-wrapper { opacity: 1 !important; transform: none !important; }
+          `}</style>
+        </noscript>
+      </head>
       <body className={`${syne.variable} ${inter.variable} font-sans antialiased`}>
         {children}
         <BackToTop />

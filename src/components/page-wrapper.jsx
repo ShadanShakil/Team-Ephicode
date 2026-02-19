@@ -12,6 +12,7 @@ export function PageWrapper({ children }) {
       <LoadingScreen onComplete={() => setIsLoading(false)} />
 
       <motion.div
+        id="content-wrapper"
         initial={{ opacity: 0, y: 15 }}
         animate={{
           opacity: isLoading ? 0 : 1,

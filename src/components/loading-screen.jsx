@@ -29,6 +29,8 @@ export function LoadingScreen({ onComplete }) {
 
   return (
     <div
+      id="loading-screen"
+      aria-hidden="true"
       className={cn(
         "fixed inset-0 z-50 flex items-center justify-center bg-black transition-opacity duration-500 ease-in-out",
         isFading ? "opacity-0" : "opacity-100"
