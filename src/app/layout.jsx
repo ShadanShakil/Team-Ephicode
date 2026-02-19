@@ -1,6 +1,7 @@
 import { Inter, Syne } from "next/font/google"
 import "./globals.css"
 import BackToTop from "@/components/back-to-top"
+import { CookieConsent } from "@/components/cookie-consent"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -59,6 +60,7 @@ export default function RootLayout({ children }) {
       <body className={`${syne.variable} ${inter.variable} font-sans antialiased`}>
         {children}
         <BackToTop />
+        <CookieConsent />
       </body>
     </html>
   )

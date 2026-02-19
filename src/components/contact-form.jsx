@@ -7,12 +7,14 @@ import * as z from "zod";
 import { motion, AnimatePresence } from "framer-motion";
 import { Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 
 const formSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters"),
     email: z.string().email("Please enter a valid email address"),
     company: z.string().optional(),
     message: z.string().min(10, "Message must be at least 10 characters"),
+    agree: z.boolean().refine(val => val === true, "You must agree to the terms"),
 });
 
 export function ContactForm() {
@@ -26,6 +28,7 @@ export function ContactForm() {
             email: "",
             company: "",
             message: "",
+            agree: true,
         },
     });
 
@@ -35,7 +38,6 @@ export function ContactForm() {
         await new Promise((resolve) => setTimeout(resolve, 2000));
         setIsSubmitting(false);
         setIsSuccess(true);
-        console.log(values);
     }
 
     const inputClasses =
@@ -155,6 +157,32 @@ export function ContactForm() {
                         <p className={errorClasses}>
                             <AlertCircle className="w-3 h-3" />
                             {form.formState.errors.message.message}
+                        </p>
+                    )}
+                </div>
+
+                {/* Agree Checkbox */}
+                <div className="space-y-2">
+                    <div className="flex items-start gap-3">
+                        <div className="flex items-center h-5">
+                            <input
+                                {...form.register("agree")}
+                                id="agree"
+                                type="checkbox"
+                                className="w-4 h-4 rounded border-border bg-secondary/50 text-accent focus:ring-accent/50 transition-all cursor-pointer"
+                            />
+                        </div>
+                        <label htmlFor="agree" className="text-xs text-muted-foreground leading-tight cursor-pointer">
+                            I agree to Team Ephicode's{" "}
+                            <Link href="/terms" className="underline hover:text-accent transition-colors">Terms of Service</Link>
+                            {" "}and{" "}
+                            <Link href="/privacy" className="underline hover:text-accent transition-colors">Privacy Policy</Link>.
+                        </label>
+                    </div>
+                    {form.formState.errors.agree && (
+                        <p className={errorClasses}>
+                            <AlertCircle className="w-3 h-3" />
+                            {form.formState.errors.agree.message}
                         </p>
                     )}
                 </div>

@@ -87,10 +87,10 @@ export function Footer() {
             {"© 2025 Ephicode. All rights reserved."}
           </p>
           <div className="flex items-center gap-6">
-            <Link href="/" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
+            <Link href="/privacy" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
+            <Link href="/terms" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
               Terms of Service
             </Link>
           </div>
