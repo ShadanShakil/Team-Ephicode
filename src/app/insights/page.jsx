@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
 import { ContactSection } from "@/components/contact-section"
 import { ArrowUpRight } from "lucide-react"
+import Link from "next/link"
 
 const articles = [
     {
@@ -47,9 +48,9 @@ export default function InsightsPage() {
                 <section className="px-5 md:px-10 lg:px-16 pb-20 md:pb-32 max-w-[1400px] mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                         {articles.map((article, i) => (
-                            <a
+                            <Link
                                 key={i}
-                                href="#"
+                                href="/insights"
                                 className="group block"
                             >
                                 <div className={`aspect-video w-full rounded-2xl mb-6 ${article.image} opacity-80 group-hover:opacity-100 transition-opacity`} />
@@ -63,7 +64,7 @@ export default function InsightsPage() {
                                     Read Article
                                     <ArrowUpRight className="w-4 h-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </section>

@@ -10,14 +10,14 @@ const navLinks = [
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Insights", href: "/insights" },
-  { label: "Learn", href: "#" },
+  { label: "Learn", href: "/services" },
   { label: "Careers", href: "/careers" },
 ]
 
 const socialLinks = [
-  { label: "LinkedIn", href: "#" },
-  { label: "Twitter", href: "#" },
-  { label: "Instagram", href: "#" },
+  { label: "LinkedIn", href: "https://linkedin.com/company/ephicode" },
+  { label: "Twitter", href: "https://twitter.com/ephicode" },
+  { label: "Instagram", href: "https://instagram.com/ephicode" },
 ]
 
 const menuVariants = {
@@ -159,7 +159,7 @@ export function Navbar() {
                     </a>
                   ))}
                 </div>
-                <p className="text-xs text-muted-foreground/60">{"© 2024 Utility"}</p>
+                <p className="text-xs text-muted-foreground/60">{"© 2025 Ephicode"}</p>
               </motion.div>
             </div>
           </motion.div>

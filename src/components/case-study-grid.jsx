@@ -13,7 +13,7 @@ export function CaseStudyGrid({ cases }) {
                 {cases.map((item, i) => (
                     <Link
                         key={item.name}
-                        href="#"
+                        href="/work"
                         className={`group block w-full rounded-2xl overflow-hidden transition-all duration-600 ease-out ${isInView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                             }`}
                         style={{ transitionDelay: `${Math.min(i, 5) * 60}ms` }}

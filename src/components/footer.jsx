@@ -25,9 +25,9 @@ const footerLinks = [
   {
     title: "Connect",
     links: [
-      { label: "LinkedIn", href: "#" },
-      { label: "Twitter / X", href: "#" },
-      { label: "Instagram", href: "#" },
+      { label: "LinkedIn", href: "https://linkedin.com/company/ephicode" },
+      { label: "Twitter / X", href: "https://twitter.com/ephicode" },
+      { label: "Instagram", href: "https://instagram.com/ephicode" },
     ],
   },
 ]
@@ -87,10 +87,10 @@ export function Footer() {
             {"© 2025 Ephicode. All rights reserved."}
           </p>
           <div className="flex items-center gap-6">
-            <Link href="#" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
+            <Link href="/" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
+            <Link href="/" className="text-[11px] text-muted-foreground/60 hover:text-foreground transition-colors">
               Terms of Service
             </Link>
           </div>

@@ -5,6 +5,8 @@ import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react"
 import { motion, useMotionValue, animate } from "framer-motion"
 import Link from "next/link"
 
+const MotionLink = motion(Link)
+
 export function CaseStudyCarousel({ title, subtitle, mobileSubtitle, cases }) {
   const [width, setWidth] = useState(0)
   const carouselRef = useRef(null)
@@ -81,9 +83,9 @@ export function CaseStudyCarousel({ title, subtitle, mobileSubtitle, cases }) {
           className="flex gap-4 md:gap-5 pr-5 md:pr-10 pb-2 w-max"
         >
           {cases.map((item, i) => (
-            <motion.a
+            <MotionLink
               key={item.name}
-              href="#"
+              href="/work"
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-50px" }}
@@ -114,7 +116,7 @@ export function CaseStudyCarousel({ title, subtitle, mobileSubtitle, cases }) {
                   </span>
                 </div>
               </div>
-            </motion.a>
+            </MotionLink>
           ))}
         </motion.div>
       </div>

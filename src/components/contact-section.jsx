@@ -2,6 +2,7 @@
 
 import { ArrowUpRight } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
+import Link from "next/link"
 
 export function ContactSection() {
   const { ref, isInView } = useInView(0.15)
@@ -17,13 +18,13 @@ export function ContactSection() {
           <p className="mt-4 md:mt-6 text-sm md:text-base text-muted-foreground max-w-lg">
             {"Ready to go borderless? Tell us about your vision, and our global strategy team will reach out within 12 hours."}
           </p>
-          <a
-            href="#"
+          <Link
+            href="/contact"
             className="group mt-8 md:mt-10 inline-flex items-center gap-3 bg-accent text-accent-foreground px-8 py-4 rounded-full text-sm md:text-base font-medium hover:brightness-110 transition-all"
           >
             Start a Project
             <ArrowUpRight className="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

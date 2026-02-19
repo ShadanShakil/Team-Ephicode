@@ -4,6 +4,7 @@ import { Footer } from "@/components/footer"
 import { PageHeader } from "@/components/page-header"
 import { ContactSection } from "@/components/contact-section"
 import { ArrowUpRight } from "lucide-react"
+import Link from "next/link"
 
 const jobs = [
     { title: "Senior Product Designer", location: "Remote", type: "Full-time" },
@@ -27,9 +28,9 @@ export default function CareersPage() {
                 <section className="px-5 md:px-10 lg:px-16 pb-20 md:pb-32 max-w-[1400px] mx-auto">
                     <div className="grid grid-cols-1 gap-4">
                         {jobs.map((job) => (
-                            <a
+                            <Link
                                 key={job.title}
-                                href="#"
+                                href="/contact"
                                 className="group flex flex-col md:flex-row md:items-center justify-between p-6 md:p-8 rounded-xl border border-border/60 hover:border-accent hover:bg-card/50 transition-all duration-300"
                             >
                                 <div>
@@ -44,7 +45,7 @@ export default function CareersPage() {
                                     Apply Now
                                     <ArrowUpRight className="w-4 h-4" />
                                 </div>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </section>

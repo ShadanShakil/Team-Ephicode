@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { ArrowUpRight, Plus, Minus } from "lucide-react"
 import { useInView } from "@/hooks/use-in-view"
+import Link from "next/link"
 
 const serviceData = [
   {
@@ -66,10 +67,10 @@ export function ServicesDetail() {
               {" proven global methodologies."}
             </h2>
           </div>
-          <a href="#" className="group inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-full text-[13px] text-foreground hover:border-accent hover:text-accent transition-colors w-fit flex-shrink-0">
+          <Link href="/services" className="group inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-full text-[13px] text-foreground hover:border-accent hover:text-accent transition-colors w-fit flex-shrink-0">
             Services
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+          </Link>
         </div>
 
         {/* Accordion items */}
@@ -109,14 +110,14 @@ export function ServicesDetail() {
                         <p className="text-[13px] md:text-sm text-muted-foreground leading-[1.7] max-w-lg">{service.description}</p>
                         <div className="flex flex-wrap gap-2">
                           {service.tags.map((tag) => (
-                            <a
+                            <Link
                               key={tag}
-                              href="#"
+                              href="/services"
                               className="group/tag inline-flex items-center gap-1.5 border border-border/70 px-3.5 py-2 rounded-full text-[12px] md:text-[13px] text-foreground/80 hover:border-accent hover:text-accent transition-colors whitespace-nowrap"
                             >
                               {tag}
                               <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/tag:opacity-100 transition-opacity" />
-                            </a>
+                            </Link>
                           ))}
                         </div>
                       </div>
@@ -131,10 +132,10 @@ export function ServicesDetail() {
 
         {/* Bottom services link */}
         <div className="mt-8 md:mt-10">
-          <a href="#" className="group inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-full text-[13px] text-foreground hover:border-accent hover:text-accent transition-colors">
+          <Link href="/services" className="group inline-flex items-center gap-2 border border-border px-5 py-2.5 rounded-full text-[13px] text-foreground hover:border-accent hover:text-accent transition-colors">
             Services
             <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </a>
+          </Link>
         </div>
       </div>
     </section>
